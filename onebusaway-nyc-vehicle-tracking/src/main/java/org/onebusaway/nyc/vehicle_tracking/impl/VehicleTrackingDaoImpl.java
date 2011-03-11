@@ -20,6 +20,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.onebusaway.gtfs.model.AgencyAndId;
 import org.onebusaway.nyc.vehicle_tracking.model.DestinationSignCodeRecord;
+import org.onebusaway.nyc.vehicle_tracking.model.UtsRecord;
 import org.onebusaway.nyc.vehicle_tracking.services.VehicleTrackingDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
@@ -74,4 +75,13 @@ public class VehicleTrackingDaoImpl implements VehicleTrackingDao {
         "anyDestinationSignCodeRecordsForDestinationSignCode",
         "destinationSignCode", destinationSignCode);
   }
+
+  @SuppressWarnings("unchecked")
+  @Override
+  public List<UtsRecord> getCurrentUTSRecordsForDepot(String depotId) {
+	return _template.findByNamedQueryAndNamedParam(
+		"currentUtsRecordsForDepot",
+		"depotId", depotId);
+  }
+
 }

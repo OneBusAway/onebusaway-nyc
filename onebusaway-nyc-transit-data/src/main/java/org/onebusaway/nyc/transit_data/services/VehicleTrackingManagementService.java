@@ -18,11 +18,14 @@ package org.onebusaway.nyc.transit_data.services;
 import java.util.List;
 
 import org.onebusaway.nyc.transit_data.model.NycVehicleStatusBean;
+import org.onebusaway.nyc.transit_data.model.UtsRecordBean;
 
 public interface VehicleTrackingManagementService {
   
   public String getDefaultAgencyId();
-
+  
+  public List<UtsRecordBean> getCurrentUTSRecordsForDepot(String depotId);
+  
   public void setVehicleStatus(String vehicleId, boolean status);
   
   public void resetVehicleTrackingForVehicleId(String vehicleId);
